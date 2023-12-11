@@ -6,7 +6,9 @@ import { RiExchangeFundsFill } from 'react-icons/ri'
 // import { TiEdit } from 'react-icons/ti';
 
 export default function TodoItem(props) {
-    const { todo, removeTodo, completeTodo, importantTodo} = props
+    const { todo, removeTodo,
+         completeTodo, importantTodo
+        } = props
 
     return (
         <div className={todo.completed ? "todo-row complete" : "todo-row"} style={todo.important ? { background: "orange" } : {}}>
