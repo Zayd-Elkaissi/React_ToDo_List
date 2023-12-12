@@ -21,7 +21,9 @@ export default function Todo(props) {
     }, [todos]);
   
     const addTodo = (text) => {
-      if (text.trim() !== "") { // Check if the text is not empty
+      if (text.trim() !== ""  && text.trim() === text) { // Check if the text is not empty
+        const isDuplicate = todos.some((todo) => todo.text.trim() === text.trim());
+        if(!isDuplicate){
         let id = 1;
         if (todos.length > 0) {
           id = todos[0].id + 1;
@@ -35,6 +37,9 @@ export default function Todo(props) {
         let newTodos = [todo, ...todos];
         setTodos(newTodos);
         setError('');
+      } else {
+        setError("This todo already exists");
+      }
       } else {
         setError("Please enter a non-empty todo text");
       }}
